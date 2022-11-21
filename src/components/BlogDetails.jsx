@@ -5,20 +5,19 @@ import React from 'react'
 const BlogDetails = () => {
 
   const { id } = useParams()
-  const { data: blog, isPending, error } = useFetch(`http://localhost:8000/blogs/${id}`);
+  const { data: blog, isPending } = useFetch(`http://localhost:8000/blogs/${id}`);
   const history = useNavigate()
 
   const handleClick = () => {
     fetch(`http://localhost:8000/blogs/${blog.id}`, {
       method: 'DELETE'
     }).then(() => {
-      history.push('/')
+      history('/')
     })
   }
 
   return (
     <div className='blog-details'>
-       {error && <div>{error}</div>}
       {isPending && <div><h3>Loading...</h3></div>}
       <article>
         <h2>{blog.title}</h2>

@@ -21,7 +21,7 @@ const Create = () => {
       body: JSON.stringify(blog)
     }).then(() => {
       setIsPending(false)
-      history.push('/')
+      history('/')
     })
   }
 
@@ -29,31 +29,31 @@ const Create = () => {
     <div className='create'>
       <h2>Add a New Blog</h2>
       <form onSubmit={handleSubmit}>
-                <label>Blog Title</label>
-                <input 
-                    type="text"
-                    required
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <label>Blog Body:</label>
-                <textarea
-                    required
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
-                />
-                <label>Blog author:</label>
-                <select
-                    value={author}
-                    onChange={(e) => setAuthor(e.target.value)}
-                >
-                    <option value="a1">a1</option>
-                    <option value="a2">a2</option>
-                    <option value="a3">a3</option>
-                </select>
-                {!isPending && <button>Add Blog</button>}
-                {isPending && <button disabled>Adding Blog</button>}
-            </form>
+        <label>Blog Title</label>
+        <input
+          type="text"
+          required
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <label>Blog Body:</label>
+        <textarea
+          required
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        />
+        <label>Blog author:</label>
+        <select
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+        >
+          <option value="a1">a1</option>
+          <option value="a2">a2</option>
+          <option value="a3">a3</option>
+        </select>
+        {!isPending && <button>Add Blog</button>}
+        {isPending && <button disabled>Adding Blog</button>}
+      </form>
     </div>
   )
 }
